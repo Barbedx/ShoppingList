@@ -1,0 +1,66 @@
+﻿<Window x:Class="ShoppingList.View.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ShoppingList.View"
+        xmlns:vm ="clr-namespace:ShoppingList.ViewModel"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="300" Width="300">
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis" />
+        <DataTemplate DataType="{x:Type vm:ChangeUserVM}">
+            <local:ChangeUser/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:ShopListVM}">
+            <local:ShopList/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:ShopListCatalogVM}">
+            <local:ShopListCatalog/>
+        </DataTemplate>
+    </Window.Resources>
+    <Window.DataContext>
+        <vm:MainWindowVM/>
+    </Window.DataContext>
+    <DockPanel LastChildFill="True">
+        <Grid DockPanel.Dock="Top" Visibility="{Binding UserSelected,Converter={StaticResource BoolToVis}}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button IsCancel="True" HorizontalContentAlignment="Stretch" VerticalAlignment="Stretch" Visibility="{Binding ShopListSelected, Converter={StaticResource BoolToVis}}" Grid.Column="0" HorizontalAlignment="Stretch" Command="{Binding ChangeShopListCommand}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="4*"/>
+                        <ColumnDefinition Width="4*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Label  Grid.Row="0" Grid.Column="0" Content="&lt;-="/>
+                    <Label  Grid.Row="0" Grid.Column="1" Content="{Binding CurrentShopList.Name}"/>
+                    <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Right" >
+
+                        <Label Content="{Binding CurrentShopList.CurrentItemCount,Mode=OneWay}"/>
+                        <Label Content="/"/>
+                        <Label Content="{Binding CurrentShopList.ItemCount,Mode=OneWay}"/>
+                    </StackPanel>
+                    <ProgressBar Grid.Row="1" Grid.ColumnSpan="3" Grid.Column="0" Value="{Binding CurrentShopList.CurrentItemCount,Mode=OneWay}" Minimum="0" Maximum="{Binding CurrentShopList.ItemCount}"></ProgressBar>
+                </Grid>
+            </Button>
+
+
+            <Button HorizontalAlignment="Stretch" 
+                    Grid.Column="1"
+                    Command="{Binding LogOutCommand}" 
+                    ToolTip="Выйти">
+                <TextBlock Text="{Binding CurrentUser.UserName,StringFormat=Приветствую: {0}}" />
+            </Button>
+
+        </Grid>
+        <ContentPresenter  Content="{Binding CurrentPageVM}"></ContentPresenter>
+    </DockPanel>
+
+</Window>

@@ -1,0 +1,57 @@
+﻿<UserControl x:Class="ShoppingList.View.ShopListCatalog"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ShoppingList.View"
+                          xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:viewmodel="clr-namespace:ShoppingList.ViewModel"
+             xmlns:usercontrols="clr-namespace:ShoppingList.UserControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.DataContext>
+        <viewmodel:ShopListCatalogVM/>
+    </UserControl.DataContext>
+    <Grid>
+        <DockPanel LastChildFill="True">
+            <Label DockPanel.Dock="Top" Content="Выберите Список:" FontSize="20"></Label>
+            <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal">
+                <Button Content="Подтвердить" Command="{Binding ChangeShopListCommand}"/>
+                <Button Content="Добавить" Command="{Binding AddShopListCommand}"/>
+            </StackPanel>
+            <ListView ItemsSource ="{Binding AvailableShopList}"
+                      SelectedItem="{Binding SelectedShopList,Mode=TwoWay}"
+                      HorizontalContentAlignment="Stretch">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Label DockPanel.Dock="Left" Grid.Row="0" Grid.Column="0" Content="{Binding Name}"/>
+                            <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right" >
+                                
+                                <Label Content="{Binding CurrentItemCount,Mode=OneWay}"/>
+                                <Label Content="/"/>
+                                <Label Content="{Binding ItemCount,Mode=OneWay}"/>
+                            </StackPanel>
+                            <ProgressBar DockPanel.Dock="Bottom" Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="0" Value="{Binding CurrentItemCount,Mode=OneWay}" Minimum="0" Maximum="{Binding ItemCount}"></ProgressBar>
+                        </Grid>
+                        <!--<TextBlock Text="{Binding Name}"/>-->
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseDoubleClick" >
+                        <i:InvokeCommandAction Command="{Binding  ChangeShopListCommand}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </ListView>
+        </DockPanel>
+
+    </Grid>
+</UserControl>

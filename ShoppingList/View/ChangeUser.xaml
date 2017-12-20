@@ -1,0 +1,38 @@
+﻿<UserControl x:Class="ShoppingList.View.ChangeUser"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ShoppingList.View"
+                          xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+
+             xmlns:viewmodel="clr-namespace:ShoppingList.ViewModel"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.DataContext>
+        <viewmodel:ChangeUserVM/>
+    </UserControl.DataContext>
+    <Grid>
+        <DockPanel LastChildFill="True">
+            <Label DockPanel.Dock="Top" Content="Выберите пользователя:" FontSize="20"></Label>
+            <StackPanel DockPanel.Dock="Bottom">
+                <Button IsDefault="True" Content="Подтвердить" Command="{Binding ChangeUserCommand}"/>
+                <Button IsCancel="True" Content="Отменить" Command="{Binding CancelCommand}"/>
+            </StackPanel>
+            <ListView ItemsSource ="{Binding AvailableUsers}"
+                      SelectedItem="{Binding SelectedUser,Mode=TwoWay}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding UserName}"/>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseDoubleClick" >
+                        <i:InvokeCommandAction Command="{Binding ChangeUserCommand}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </ListView>
+        </DockPanel>
+            
+    </Grid>
+</UserControl>
