@@ -17,6 +17,7 @@ namespace BaseVM
             {
                 var command = new RelayCommand(executeCommandAction);
                 _commands.Add(commandName, command);
+                return command;
             }
 
             return _commands[commandName];
