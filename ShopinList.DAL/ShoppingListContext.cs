@@ -10,7 +10,7 @@ namespace ShoppingList.DAL
             Database.SetInitializer(new ShoppingListInitializer());
             using (var db = new ShoppingListContext())
             {
-                    db.Database.Initialize(false); //пока пересоздаем всегда
+                    db.Database.Initialize(false);  
             }
         }
 

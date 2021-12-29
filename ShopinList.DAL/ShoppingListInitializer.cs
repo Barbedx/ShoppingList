@@ -15,14 +15,14 @@ namespace ShoppingList.DAL
             #region Seed Item Categorys
             var meatCategory = new ItemCategory()
             {
-                Name = "Мясо"
+                Name = "Meat"
             };
 
-            var pig = new Item("Свинина");
+            var pig = new Item("Pork");
             meatCategory.Items.Add(pig);
 
-            meatCategory.Items.Add(new Item("Телятина"));
-            var sousage = new Item("Сосиски");
+            meatCategory.Items.Add(new Item("Veal"));
+            var sousage = new Item("Sousage");
             meatCategory.Items.Add(sousage);
             context.ItemCategorys.Add(meatCategory);
 
@@ -31,56 +31,52 @@ namespace ShoppingList.DAL
 
             var vegCategory = new ItemCategory()
             {
-                Name = "Овощи"
+                Name = "Wegetables"
             };
 
-            vegCategory.Items.Add(new Item("Огурцы"));
-            var tomato = new Item("Помидоры");
-
+            vegCategory.Items.Add(new Item("Onion"));
+            var tomato = new Item("Tomato");
             vegCategory.Items.Add(tomato);
-
-            vegCategory.Items.Add(new Item("Морковь"));
-
+            vegCategory.Items.Add(new Item("Carrot"));
             context.ItemCategorys.Add(vegCategory);
 
 
             var fruitCategory = new ItemCategory()
             {
-                Name = "Фрукты"
+                Name = "Fruits"
             };
-            var apple = new Item("Яблука");
+            var apple = new Item("Apple");
             fruitCategory.Items.Add(apple);
-            fruitCategory.Items.Add(new Item("Мандарины"));
-            fruitCategory.Items.Add(new Item("Бананы"));
+            fruitCategory.Items.Add(new Item("Tangerines"));
+            fruitCategory.Items.Add(new Item("Bananas"));
             context.ItemCategorys.Add(fruitCategory);
 
 
 
             var drinkCategory = new ItemCategory()
             {
-                Name = "Напитки"
+                Name = "Drinks"
             };
 
-            drinkCategory.Items.Add(new Item("Минералка"));
-
-            drinkCategory.Items.Add(new Item("Сок яблучный"));
-
-            var beer = new Item("Пиво");
-            drinkCategory.Items.Add(beer);
+            var beer = new Item("Beer");
+            drinkCategory.Items.Add(new Item("Beer"));
+            drinkCategory.Items.Add(new Item("Apple juice"));
+            drinkCategory.Items.Add(new Item("Orange juice"));
+             
             context.ItemCategorys.Add(drinkCategory);
             #endregion
 
             #region Seed Test Users
-            //Заполним базу, (по хорошему нужно сделать регистрацию и пароль обязательно хешировать.
+            // Fill in the base, (for good reason, you need to do the registration and the password must be hashed.
             var user1 = new User()
             {
-                UserName = "User1",
+                UserName = "Furkan",
                 HashPassword = "1111",
                 LastLogin = DateTime.Now.AddDays(-5)
             };
             var shopList1U1 = new ShopList()
             {
-                Name = "Пикник"
+                Name = "ski trip"
             };
             shopList1U1.ShopListItems.Add(
                 new ShopListItem(apple, 5) { User = user1 });
@@ -90,7 +86,7 @@ namespace ShoppingList.DAL
 
             var shopList2U1 = new ShopList()
             {
-                Name = "Новый год"
+                Name = "New Year party"
             };
             shopList2U1.ShopListItems.Add(
                 new ShopListItem(sousage) { User = user1 });
@@ -103,13 +99,13 @@ namespace ShoppingList.DAL
 
             var user2 = new User()
             {
-                UserName = "User2",
+                UserName = "Grandpa",
                 HashPassword = "2222",
                 LastLogin = DateTime.Now.AddDays(-1)
             };
             var shopList2U2 = new ShopList()
             {
-                Name = "User2 SHop List"
+                Name = "gifts for grandchildren"
             };
             shopList2U2.ShopListItems.Add(new ShopListItem(sousage, 7) { User = user2 });
             shopList2U2.ShopListItems.Add(new ShopListItem(tomato, 10) { User = user2 });
@@ -117,8 +113,7 @@ namespace ShoppingList.DAL
             user2.ShopLists.Add(shopList2U2);
             context.Users.Add(user2);
             #endregion
-
-
+             
             base.Seed(context);
         }
     }
