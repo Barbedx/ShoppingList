@@ -36,7 +36,7 @@ namespace ShoppingList.BLL.Model
         [ForeignKey(nameof(UserId))]
         public  virtual User User { get; set; }
 
-        //[ForeignKey(nameof(UserId))]
+
         public   virtual ShopList ShopList { get; set; }
 
         [ForeignKey(nameof(ItemId))]

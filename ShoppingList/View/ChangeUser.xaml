@@ -14,10 +14,10 @@
     </UserControl.DataContext>
     <Grid>
         <DockPanel LastChildFill="True">
-            <Label DockPanel.Dock="Top" Content="Выберите пользователя:" FontSize="20"></Label>
+            <Label DockPanel.Dock="Top" Content="Select user:" FontSize="20"></Label>
             <StackPanel DockPanel.Dock="Bottom">
-                <Button IsDefault="True" Content="Подтвердить" Command="{Binding ChangeUserCommand}"/>
-                <Button IsCancel="True" Content="Отменить" Command="{Binding CancelCommand}"/>
+                <Button IsDefault="True" Content="Ok" Command="{Binding ChangeUserCommand}"/>
+                <Button IsCancel="True" Content="Cancel" Command="{Binding CancelCommand}"/>
             </StackPanel>
             <ListView ItemsSource ="{Binding AvailableUsers}"
                       SelectedItem="{Binding SelectedUser,Mode=TwoWay}">

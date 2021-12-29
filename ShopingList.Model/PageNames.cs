@@ -12,7 +12,5 @@ namespace ShoppingList.BLL
         public static readonly string ShopListChanged = "ShopListChanged";
         public static readonly string NewShopList = "NewShopList";
         public static readonly string ShopListItemChanged = "ShopListItemChanged";
-        //public static readonly string UserChanged = "UserChanged";
-        //public static readonly string UserChanged = "UserChanged";
     }
 }

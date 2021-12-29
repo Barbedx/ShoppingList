@@ -35,10 +35,7 @@ namespace ShoppingList.Util
             if (!File.Exists(_log_file_path))
                 File.Create(_log_file_path);
         }
-        /// <summary>
-        /// Записываем сообщение об ошибке в лог
-        /// </summary>
-        /// <param name="ex"></param>
+
         public void WriteToLog(Exception ex) {
             WriteToLog(ex.Message);
         }

@@ -20,8 +20,7 @@ namespace ShoppingList.BLL.Model
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int ID { get; private set; }
-        //[Required]
+        public int ID { get; private set; } 
         public int? CategoryId { get; set; }
         [Required]
         [StringLength(50)]

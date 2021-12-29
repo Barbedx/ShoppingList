@@ -28,7 +28,8 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Button IsCancel="True" HorizontalContentAlignment="Stretch" VerticalAlignment="Stretch" Visibility="{Binding ShopListSelected, Converter={StaticResource BoolToVis}}" Grid.Column="0" HorizontalAlignment="Stretch" Command="{Binding ChangeShopListCommand}">
+            <Button IsCancel="True" HorizontalContentAlignment="Stretch" VerticalAlignment="Stretch" Visibility="{Binding ShopListSelected, Converter={StaticResource BoolToVis}}" 
+                    Grid.Column="0" HorizontalAlignment="Stretch" Command="{Binding ChangeShopListCommand}">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*"/>
@@ -47,7 +48,9 @@
                         <Label Content="/"/>
                         <Label Content="{Binding CurrentShopList.ItemCount,Mode=OneWay}"/>
                     </StackPanel>
-                    <ProgressBar Grid.Row="1" Grid.ColumnSpan="3" Grid.Column="0" Value="{Binding CurrentShopList.CurrentItemCount,Mode=OneWay}" Minimum="0" Maximum="{Binding CurrentShopList.ItemCount}"></ProgressBar>
+                    <ProgressBar Grid.Row="1" Grid.ColumnSpan="3" Grid.Column="0" 
+                                 Value="{Binding CurrentShopList.CurrentItemCount,Mode=OneWay}" 
+                                 Minimum="0" Maximum="{Binding CurrentShopList.ItemCount}"></ProgressBar>
                 </Grid>
             </Button>
 
@@ -55,8 +58,8 @@
             <Button HorizontalAlignment="Stretch" 
                     Grid.Column="1"
                     Command="{Binding LogOutCommand}" 
-                    ToolTip="Выйти">
-                <TextBlock Text="{Binding CurrentUser.UserName,StringFormat=Приветствую: {0}}" />
+                    ToolTip="Exit">
+                <TextBlock Text="{Binding CurrentUser.UserName,StringFormat=Welcome: {0}}" />
             </Button>
 
         </Grid>

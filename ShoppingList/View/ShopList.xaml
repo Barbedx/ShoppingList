@@ -6,10 +6,7 @@
              xmlns:local="clr-namespace:ShoppingList.View"
              xmlns:viewmodel="clr-namespace:ShoppingList.ViewModel"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
-    <!--<UserControl.DataContext>
-        <viewmodel:ShopListVM/>
-    </UserControl.DataContext>-->
+             d:DesignHeight="300" d:DesignWidth="300"> 
     <UserControl.Resources>
         <ResourceDictionary>
             <BooleanToVisibilityConverter x:Key="BoolToVis" />
@@ -43,10 +40,9 @@
                 <StackPanel>
 
                     <TextBlock Text="{Binding Error}" />
-                    <TextBlock Text="Добавить"  Visibility="{Binding CanAddItem, Converter={StaticResource BoolToVis}}"/>
+                    <TextBlock Text="Add new list"  Visibility="{Binding CanAddItem, Converter={StaticResource BoolToVis}}"/>
                 </StackPanel>
-            </Button>
-            <!--<ComboBox DockPanel.Dock="Bottom" ></ComboBox>-->
+            </Button> 
             <Grid DockPanel.Dock="Bottom">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
@@ -63,8 +59,7 @@
                                             Style="{StaticResource ControlWithValidation}"
                                             Text="{Binding  NewItemName, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay,NotifyOnValidationError=True}"/>
                 <TextBox Grid.Column="1" Text="{Binding Count, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True}" DockPanel.Dock="Bottom"/>
-            </Grid>
-            <!--ToolTip="{Binding Path=SelectedItem.Count, StringFormat=Всего точек: {0}, RelativeSource={RelativeSource Self}}"-->
+            </Grid> 
             <ListBox ItemsSource="{Binding Items}" HorizontalContentAlignment="Stretch">
 
                 <ListBox.ItemTemplate>
