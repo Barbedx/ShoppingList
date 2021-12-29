@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ShoppingList.View"
-        xmlns:vm ="clr-namespace:ShoppingList.ViewModel"
+        xmlns:vm ="clr-namespace:ShoppingList.ViewModel" d:DataContext="{d:DesignInstance Type=vm:MainWindowVM}"
         mc:Ignorable="d"
         Title="MainWindow" Height="300" Width="300">
     <Window.Resources>
@@ -19,9 +19,6 @@
             <local:ShopListCatalog/>
         </DataTemplate>
     </Window.Resources>
-    <Window.DataContext>
-        <vm:MainWindowVM/>
-    </Window.DataContext>
     <DockPanel LastChildFill="True">
         <Grid DockPanel.Dock="Top" Visibility="{Binding UserSelected,Converter={StaticResource BoolToVis}}">
             <Grid.ColumnDefinitions>

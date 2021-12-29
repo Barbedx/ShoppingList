@@ -5,13 +5,9 @@ namespace ShoppingList.DAL
 {
     public class ShoppingListContext : DbContext
     {
-        static ShoppingListContext()
+        public ShoppingListContext() : base("name=ShoppingList")
         {
-            Database.SetInitializer(new ShoppingListInitializer());
-            using (var db = new ShoppingListContext())
-            {
-                    db.Database.Initialize(false);  
-            }
+            Database.SetInitializer(new ShoppingListInitializer());  
         }
 
         public IDbSet<User> Users{ get; set; }

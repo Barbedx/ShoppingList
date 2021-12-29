@@ -13,23 +13,18 @@ namespace ShoppingList.ViewModel
 {
     public class MainWindowVM : ViewModelBase
     {
-
-    
-
-
         public MainWindowVM()
         {
-            //CurrentPageVM = new ShopListVM();
             CurrentPageVM = new ChangeUserVM();
             Mediator.Register(PageNames.UserChanged, OnUserChanged);
             Mediator.Register(PageNames.ShopListChanged, OnShopListChanged);
             Mediator.Register(PageNames.NewShopList, OpenNewShopList);
-            Mediator.Register(PageNames.ShopListItemChanged, ((args) => OnPropertyChanged(nameof(CurrentShopList))));
+            Mediator.Register(PageNames.ShopListItemChanged, (args) => OnPropertyChanged(nameof(CurrentShopList)));
         }
 
         private void OpenNewShopList(object obj)
         {
-            //CurrentPageVM = new ShopListCardVM(new ShopListVM(new  ShopList() { User = CurrentUser }));
+        //..    CurrentPageVM = new ShopListCardVM(new ShopListVM(new  ShopList() { User = CurrentUser }));
         }
 
         private void OnShopListChanged(object obj)
@@ -52,11 +47,11 @@ namespace ShoppingList.ViewModel
         public User CurrentUser => Manager.Instance.CurrentUser;
 
         public bool UserSelected => CurrentUser != null;
-        public bool ShopListSelected=> CurrentShopList != null;
+        public bool ShopListSelected => CurrentShopList != null;
 
-         
 
-        private  ViewModelBase _currentPageVM;
+
+        private ViewModelBase _currentPageVM;
 
         public ViewModelBase CurrentPageVM
         {

@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace ShoppingList.DAL
 {
-    internal class ShoppingListInitializer : DropCreateDatabaseIfModelChanges<ShoppingListContext>
+    internal class ShoppingListInitializer : CreateDatabaseIfNotExists<ShoppingListContext>
     {
 
         protected override void Seed(ShoppingListContext context)
@@ -18,8 +18,8 @@ namespace ShoppingList.DAL
                 Name = "Meat"
             };
 
-            var pig = new Item("Pork");
-            meatCategory.Items.Add(pig);
+            var chicken = new Item("Chicken");
+            meatCategory.Items.Add(chicken);
 
             meatCategory.Items.Add(new Item("Veal"));
             var sousage = new Item("Sousage");
@@ -91,7 +91,7 @@ namespace ShoppingList.DAL
             shopList2U1.ShopListItems.Add(
                 new ShopListItem(sousage) { User = user1 });
 
-            shopList2U1.ShopListItems.Add(new ShopListItem(pig, 2.8) { User = user1 });
+            shopList2U1.ShopListItems.Add(new ShopListItem(chicken, 2.8) { User = user1 });
             user1.ShopLists.Add(shopList2U1);
 
             context.Users.Add(user1);

@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
+using ShoppingList.ViewModel;
+
 namespace ShoppingList.View
 {
     /// <summary>
@@ -22,6 +24,7 @@ namespace ShoppingList.View
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = new MainWindowVM();
         }
     }
 }

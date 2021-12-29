@@ -23,11 +23,6 @@ namespace ShoppingList.ViewModel
             set { _innerValue = value; }
         }
 
-        //public ShopList InnerValue { get; set; }
-        //public ShopListVM(ShopList innerValue) : base(innerValue)
-        //{
-
-        //}
         public List<ShopListItemVM> Items => InnerValue.ShopListItems.Select(x => new ShopListItemVM() { InnerValue = x }).ToList();
         public int ItemCount => InnerValue.ShopListItems.Count();
         public int CurrentItemCount => InnerValue.ShopListItems.Where(x => x.IsChecked).Count();

@@ -1,8 +1,10 @@
 ﻿using BaseVM.Mediator;
+
 using ShoppingList.BLL;
 using ShoppingList.BLL.Model;
 using ShoppingList.DAL;
 using ShoppingList.ViewModel;
+
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -13,9 +15,7 @@ using System.Windows;
 
 namespace ShoppingList
 {
-    /// <summary>
-    /// Не очень хорошее решение, нужно бы сделать правильную N-tier архитектуру, но в такие сроки для тестового заморачиваться не хочу
-    /// </summary>
+ 
     public sealed class Manager
     {
 
@@ -24,13 +24,9 @@ namespace ShoppingList
 
         internal void UpdateShopListItem(ShopListItem innerValue)
         {
-            //using (var _ctx = new ShoppingListContext())
-            //{
-
-                _ctx.Entry(innerValue).State = EntityState.Modified;
-                _ctx.SaveChanges();
-                Mediator.NotifyCollegues(PageNames.ShopListItemChanged, null);
-            //}
+            _ctx.Entry(innerValue).State = EntityState.Modified;
+            _ctx.SaveChanges();
+            Mediator.NotifyCollegues(PageNames.ShopListItemChanged, null);
         }
         private ShoppingListContext _ctx;
         private Manager()
@@ -49,7 +45,7 @@ namespace ShoppingList
         public User CurrentUser
         {
             get
-            { 
+            {
                 return _currentUser;
             }
             set
@@ -59,42 +55,30 @@ namespace ShoppingList
 
             }
         }
-        /// <summary>
-        /// Добавляем Товар в список, елси нет - создаем.
-        /// </summary>
-        /// <param name="itemName"></param>
-        /// <param name="count"></param>
-        internal void AddItemToCurrentShopList(string itemName, double  count)
+        internal void AddItemToCurrentShopList(string itemName, double count)
         {
             try
             {
 
-            Item item = _ctx.Items.FirstOrDefault(i => i.Name == itemName);
-            if (item==null)
-            {
-                item = new Item(itemName);
-                _ctx.Items.Add(item);
+                Item item = _ctx.Items.FirstOrDefault(i => i.Name == itemName);
+                if (item == null)
+                {
+                    item = new Item(itemName);
+                    _ctx.Items.Add(item);
 
-            }
-            _ctx.ShopListItems.Add(new ShopListItem(item, count) { User = CurrentUser, ShopList = CurrentShopList.InnerValue });
-            _ctx.SaveChanges();
+                }
+                _ctx.ShopListItems.Add(new ShopListItem(item, count) { User = CurrentUser, ShopList = CurrentShopList.InnerValue });
+                _ctx.SaveChanges();
 
-            Mediator.NotifyCollegues(PageNames.ShopListItemChanged, null);
+                Mediator.NotifyCollegues(PageNames.ShopListItemChanged, null);
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Ошибка:{ex.Message}");
-             
+
 
             }
         }
-
-        //public void OnShopListChanged(ShopList shopLit )
-        //{
-        //    _ctx.Entry(CurrentShopList.InnerValue).State = EntityState.Modified;
-        //    _ctx.SaveChanges();
-        //    //_ctx.SaveChanges(CurrentShopList.InnerValue)
-        //}
 
         private ShopListVM _currentShopList;
         public ShopListVM CurrentShopList
@@ -104,16 +88,13 @@ namespace ShoppingList
             {
                 _currentShopList = value;
                 Mediator.NotifyCollegues(PageNames.ShopListChanged, null);
-
             }
         }
-
-
         public List<User> GetAllUsers()
         {
             try
             {
-            return _ctx.Users.ToList();
+                return _ctx.Users.ToList();
 
             }
             catch (Exception ex)
@@ -125,9 +106,8 @@ namespace ShoppingList
         }
         public List<ShopList> GetShopLists()
         {
-            
-                return CurrentUser.ShopLists.ToList();
-           
+            return CurrentUser.ShopLists.ToList();
+
         }
 
 
