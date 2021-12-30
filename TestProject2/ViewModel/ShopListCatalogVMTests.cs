@@ -1,10 +1,12 @@
 namespace ShoppingList.Tests.ViewModel
 {
-    using ShoppingList.ViewModel;
+ 
+
     using System;
     using NUnit.Framework;
     using System.Collections.Generic;
     using System.Windows.Input;
+    using ShoppingList.ViewModel;
 
     [TestFixture]
     public class ShopListCatalogVMTests
