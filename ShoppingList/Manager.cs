@@ -1,6 +1,5 @@
 ﻿using BaseVM.Mediator;
 
-using ShoppingList.BLL;
 using ShoppingList.BLL.Model;
 using ShoppingList.DAL;
 using ShoppingList.ViewModel;
@@ -9,13 +8,10 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
-namespace ShoppingList
+namespace ShoppingList.BLL
 {
- 
     public sealed class Manager
     {
 
@@ -74,7 +70,7 @@ namespace ShoppingList
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Ошибка:{ex.Message}");
+                MessageBox.Show($"Error:{ex.Message}");
 
 
             }
@@ -99,7 +95,7 @@ namespace ShoppingList
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Ошибка:{ex.Message}");
+                MessageBox.Show($"Error:{ex.Message}");
                 //throw;
                 return null;
             }

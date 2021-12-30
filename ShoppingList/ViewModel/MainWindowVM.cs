@@ -1,12 +1,7 @@
 ﻿using ShoppingList.BLL.Model;
-using ShoppingList.DAL;
-using System.Collections.Generic;
-using System.Linq;
-using System.Data.Entity;
 using BaseVM;
 using System.Windows.Input;
 using BaseVM.Mediator;
-using System;
 using ShoppingList.BLL;
 
 namespace ShoppingList.ViewModel
@@ -18,14 +13,9 @@ namespace ShoppingList.ViewModel
             CurrentPageVM = new ChangeUserVM();
             Mediator.Register(PageNames.UserChanged, OnUserChanged);
             Mediator.Register(PageNames.ShopListChanged, OnShopListChanged);
-            Mediator.Register(PageNames.NewShopList, OpenNewShopList);
+ 
             Mediator.Register(PageNames.ShopListItemChanged, (args) => OnPropertyChanged(nameof(CurrentShopList)));
-        }
-
-        private void OpenNewShopList(object obj)
-        {
-        //..    CurrentPageVM = new ShopListCardVM(new ShopListVM(new  ShopList() { User = CurrentUser }));
-        }
+        } 
 
         private void OnShopListChanged(object obj)
         {
@@ -40,6 +30,7 @@ namespace ShoppingList.ViewModel
             OnPropertyChanged(nameof(UserSelected));
             OnPropertyChanged(nameof(ShopListSelected));
             CurrentPageVM = new ShopListCatalogVM();
+            //Manager.Instance.CurrentShopList = null;
         }
 
 

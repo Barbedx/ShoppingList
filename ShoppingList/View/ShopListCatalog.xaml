@@ -14,10 +14,9 @@
     </UserControl.DataContext>
     <Grid>
         <DockPanel LastChildFill="True">
-            <Label DockPanel.Dock="Top" Content="Выберите Список:" FontSize="20"></Label>
-            <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal">
-                <Button Content="Подтвердить" Command="{Binding ChangeShopListCommand}"/>
-                <Button Content="Добавить" Command="{Binding AddShopListCommand}"/>
+            <Label DockPanel.Dock="Top" Content="Select list:" FontSize="20"></Label>
+            <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Content="Ok" Command="{Binding ChangeShopListCommand}" Width="80" />
             </StackPanel>
             <ListView ItemsSource ="{Binding AvailableShopList}"
                       SelectedItem="{Binding SelectedShopList,Mode=TwoWay}"

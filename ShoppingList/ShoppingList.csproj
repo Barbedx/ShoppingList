@@ -101,7 +101,6 @@
       <DependentUpon>ShopListView.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\ChangeUserVM.cs" />
-    <Compile Include="ViewModel\ShopListCardVM.cs" />
     <Compile Include="ViewModel\ShopListCatalogVM.cs" />
     <Compile Include="ViewModel\ShopListVM.cs" />
     <Compile Include="ViewModel\UserVM.cs" />
@@ -110,9 +109,6 @@
     </Compile>
     <Compile Include="View\ShopList.xaml.cs">
       <DependentUpon>ShopList.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\ShopListCard.xaml.cs">
-      <DependentUpon>ShopListCard.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ShopListCatalog.xaml.cs">
       <DependentUpon>ShopListCatalog.xaml</DependentUpon>
@@ -134,10 +130,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\ShopList.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\ShopListCard.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -189,10 +181,6 @@
     <ProjectReference Include="..\ShopinList.DAL\ShoppingList.DAL.csproj">
       <Project>{bffb0235-3a70-46bf-99ac-2172f3edf9b3}</Project>
       <Name>ShoppingList.DAL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ShoppingList.Util\ShoppingList.Util.csproj">
-      <Project>{3a8b8d24-eb90-4e31-9793-0d8653f596b3}</Project>
-      <Name>ShoppingList.Util</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

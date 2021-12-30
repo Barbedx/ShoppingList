@@ -1,9 +1,6 @@
 ﻿using BaseVM;
-using ShoppingList.BLL.Model;
 using System.Collections.Generic;
 using System.Windows.Input;
-using System;
-using BaseVM.Mediator;
 using ShoppingList.BLL;
 using System.Linq;
 
@@ -14,7 +11,7 @@ namespace ShoppingList.ViewModel
         private List<ShopListVM> _availableShopList;
 
         public List<ShopListVM> AvailableShopList => _availableShopList ?? (_availableShopList= Manager.Instance.GetShopLists().Select(x => new ShopListVM(){InnerValue = x}).ToList());
-
+         
 
         private ShopListVM _selectedShopList;
 
@@ -44,16 +41,6 @@ namespace ShoppingList.ViewModel
         private bool CanChangeShopList()
         {
            return  _selectedShopList != null;
-        }
-
-        private void AddShopList()
-        {
-            Mediator.NotifyCollegues(PageNames.NewShopList,null);
-        }
-
-        public ICommand AddShopListCommand
-        {
-            get { return Commands.GetOrCreateCommand(() => AddShopListCommand, AddShopList); }
         }
 
     }

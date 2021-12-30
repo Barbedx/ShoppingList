@@ -1,14 +1,9 @@
 ﻿using BaseVM;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ShoppingList.BLL.Model;
-using BaseVM.Custom;
-using System.Collections.ObjectModel;
 using System.Windows.Input;
-using System.Collections;
+using ShoppingList.BLL;
 
 namespace ShoppingList.ViewModel
 {
@@ -88,11 +83,11 @@ namespace ShoppingList.ViewModel
                 switch (columnName)
                 {
                     case nameof(NewItemName) when string.IsNullOrWhiteSpace(Name):
-                        return "Укажите имя!";
+                        return "Set Name!";
                     case nameof(NewItemName) when Items.Any(x => x.Item.Name == NewItemName):
-                        return "Данный товар уже существует в текущем списке";
+                        return "This item already exists in list";
                     case nameof(Count) when Count <= 0:
-                        return "Количество должно быть больше 0";
+                        return "Quantity must be great than 0";
                     default:
                         return string.Empty;
                 }

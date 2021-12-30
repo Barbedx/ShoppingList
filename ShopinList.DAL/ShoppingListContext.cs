@@ -7,7 +7,7 @@ namespace ShoppingList.DAL
     {
         public ShoppingListContext() : base("name=ShoppingList")
         {
-            Database.SetInitializer(new ShoppingListInitializer());  
+            Database.SetInitializer(new ShoppingListInitializer());
         }
 
         public IDbSet<User> Users{ get; set; }

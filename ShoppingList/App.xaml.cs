@@ -1,5 +1,4 @@
-﻿using ShoppingList.Util;
-using System;
+﻿using System;
 using System.Windows;
 
 namespace ShoppingList
@@ -17,7 +16,7 @@ namespace ShoppingList
 
         private void OnUnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
-            Logger.Instance.WriteToLog($"Unhandled exception{(e.ExceptionObject as Exception)}");
+            MessageBox.Show($"Unhandled exception{e.ExceptionObject as Exception}");
         }
 
     }

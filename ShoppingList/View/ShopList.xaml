@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ShoppingList.View"
-             xmlns:viewmodel="clr-namespace:ShoppingList.ViewModel"
+             xmlns:viewmodel="clr-namespace:ShoppingList.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:ShopListVM}"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300"> 
     <UserControl.Resources>
@@ -27,7 +27,7 @@
                 </Setter>
                 <Style.Triggers>
                     <Trigger Property="Validation.HasError" Value="True">
-                        <Setter Property="ToolTip" Value="{Binding (Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}"/>
+                        <Setter Property="ToolTip" Value="{Binding (Validation.Errors)/ErrorContent, RelativeSource={x:Static RelativeSource.Self}}"/>
                     </Trigger>
                 </Style.Triggers>
             </Style>
@@ -37,10 +37,9 @@
     <Grid>
         <DockPanel>
             <Button Command="{Binding AddItemCommand}" IsDefault="True" DockPanel.Dock="Bottom">
-                <StackPanel>
-
+                <StackPanel> 
                     <TextBlock Text="{Binding Error}" />
-                    <TextBlock Text="Add new list"  Visibility="{Binding CanAddItem, Converter={StaticResource BoolToVis}}"/>
+                    <TextBlock Text="Add item"  Visibility="{Binding CanAddItem, Converter={StaticResource BoolToVis}}"/>
                 </StackPanel>
             </Button> 
             <Grid DockPanel.Dock="Bottom">
@@ -58,7 +57,7 @@
                                             DisplayMemberPath="Name" 
                                             Style="{StaticResource ControlWithValidation}"
                                             Text="{Binding  NewItemName, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay,NotifyOnValidationError=True}"/>
-                <TextBox Grid.Column="1" Text="{Binding Count, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True}" DockPanel.Dock="Bottom"/>
+                <TextBox  Style="{StaticResource ControlWithValidation}" Grid.Column="1" Text="{Binding Count, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True}" DockPanel.Dock="Bottom"/>
             </Grid> 
             <ListBox ItemsSource="{Binding Items}" HorizontalContentAlignment="Stretch">
 

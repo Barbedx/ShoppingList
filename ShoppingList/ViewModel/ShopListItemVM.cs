@@ -1,4 +1,6 @@
 ﻿using BaseVM;
+
+using ShoppingList.BLL;
 using ShoppingList.BLL.Model;
 
 namespace ShoppingList.ViewModel

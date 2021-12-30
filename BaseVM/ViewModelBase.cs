@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
 
 namespace BaseVM
 {
-       
+
     public abstract class ViewModelBase : INotifyPropertyChanged, IDataErrorInfo //INotifyDataErrorInfo, 
     { 
 

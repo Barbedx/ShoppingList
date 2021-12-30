@@ -1,17 +1,14 @@
 ﻿using BaseVM;
-using BaseVM.Mediator;
+
 using ShoppingList.BLL;
 using ShoppingList.BLL.Model;
-using System;
+
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace ShoppingList.ViewModel
 {
-    class ChangeUserVM : ViewModelBase
+    public class ChangeUserVM : ViewModelBase
     {
 
         private List<User> _availableUsers;
